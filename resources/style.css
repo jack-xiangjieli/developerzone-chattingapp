@@ -1,0 +1,62 @@
+.navbar-brand {
+	font-size: 20px;
+}
+
+
+#button {
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 15px;
+}
+
+
+#container {
+	background-color: lightgreen;
+	text-align: center;
+	padding-left: auto;
+	padding-top: 30px;
+	padding-bottom: 15px;
+	margin: auto;
+}
+
+#indexImage {
+	margin-left: 230px;
+}
+
+
+#Message {
+	background-color: white;
+	margin-left: 0px;
+	padding-top: 10px;
+}
+
+#login {
+	position: relative;
+	margin-top: 100px;
+	margin-right: 500px;
+	margin-left: 500px;
+}
+
+#messageArea {
+	position: fixed;
+	bottom: 10px;
+	left: 10%;
+	right: 10%;
+	width: 60%;
+	margin: auto;
+
+}
+
+.media {
+	margin-top: 15px;
+}
+
+#messageContainer {
+	border-left: silver solid 1px;
+	border-right: silver solid 1px;
+	width: 60%;
+	left: 20%;
+	right: 20%;
+}
+
+
