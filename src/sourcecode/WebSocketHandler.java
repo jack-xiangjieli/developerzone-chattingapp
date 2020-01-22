@@ -9,7 +9,9 @@ import java.nio.channels.SocketChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.Map;
 
 public class WebSocketHandler {
@@ -46,16 +48,28 @@ public class WebSocketHandler {
         joinMsgArr[0] = joinMsgPayload.substring(0, firstSpacePos);
         joinMsgArr[1] = joinMsgPayload.substring(firstSpacePos + 1);
 
-        String roomname = joinMsgArr[1];
+        // determine whether is "get list" message or "join room" message
+        if (joinMsgArr[0].equals("get")) {     // get list message
+            ArrayList<String[]> allrooms = jdbcMySQLVersion.getAllRooms();
+            Collections.sort(allrooms, (a, b) -> Integer.parseInt(b[1]) - Integer.parseInt(a[1]));
+            for (String[] info : allrooms) {
+                sendMessage(socketChannel.socket(), info[0], info[1] + " " + info[2]);
+            }
+        }
+        else {   // join room message
+            String roomname = joinMsgArr[1];
 
-        if (roomMap.containsKey(roomname)) {
-            roomMap.get(roomname).addClient(socketChannel);
+            if (roomMap.containsKey(roomname)) {
+                // add client socket to the room object
+                roomMap.get(roomname).addClient(socketChannel);
+            }
+            else {
+                Room room = new Room(socketChannel, roomname, jdbcMySQLVersion);
+                room.addClient(socketChannel);
+                roomMap.put(roomname, room);
+            }
         }
-        else {
-            Room room = new Room(socketChannel, roomname, jdbcMySQLVersion);
-            room.addClient(socketChannel);
-            roomMap.put(roomname, room);
-        }
+
     }
 
     public static String decodeMessage(Socket socket) throws IOException {

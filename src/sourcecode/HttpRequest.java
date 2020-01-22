@@ -27,12 +27,15 @@ public class HttpRequest {
             else if (strArr[1].equals("/chatroom")) {
                 fileName = "chatroom.html";
             }
+            else if (strArr[1].equals("/list")) {
+                fileName = "list.html";
+            }
             else fileName = strArr[1].substring(1);
 
             String curLine;
             while((curLine = in.readLine()) != null) {
                 if (curLine.equals("")) break;
-                System.out.println(curLine);
+//                System.out.println(curLine);
                 String[] stringArr = curLine.split(": ");
                 if (stringArr.length == 2) requestMap.put(stringArr[0], stringArr[1]);
             }

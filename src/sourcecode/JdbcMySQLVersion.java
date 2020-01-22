@@ -12,9 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JdbcMySQLVersion {
-    String url = "jdbc:mysql://localhost:3306/testdb";
-    String user = "testuser";
-    String password = "test623";
+    String url ="jdbc:mysql://developerzoneserver.mysql.database.azure.com:3306/developerzone?useSSL=true&requireSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String user = "xiangjie@developerzoneserver";
+    String password = "*Xdf973535892";
     Connection connection;
     Statement statement;
 
@@ -29,10 +29,9 @@ public class JdbcMySQLVersion {
 
     }
 
-
     public boolean hasRoom(String roomname) throws SQLException {
 
-        String query = "SELECT * from AllRooms";
+        String query = "SELECT * from allrooms";
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
             String s = resultSet.getString(2);
@@ -55,17 +54,39 @@ public class JdbcMySQLVersion {
     }
 
     public void addRoom(String roomname) throws SQLException {
-        String query = "INSERT INTO AllRooms (roomname) VALUES (\"" + roomname + "\");";
+        String query = "INSERT INTO allrooms (roomname, history_messages, current_online) VALUES (\"" + roomname + "\", 0, 1);";
         statement.execute(query);
     }
 
     public void addMessage(String roomname, String[] msgInfo) throws SQLException {
         String query = "INSERT INTO " + roomname + " (username, message) VALUES (\"" + msgInfo[0] + "\", \"" + msgInfo[1] + "\")";
         statement.execute(query);
+        String query1 = "UPDATE allrooms SET history_messages = history_messages + 1 WHERE roomname = \"" + roomname + "\"";
+        statement.execute(query1);
+    }
+
+    public void updateCurrentOnline(String roomname, int number) throws SQLException {
+        String query = "UPDATE allrooms SET current_online = " + number + " WHERE roomname = \"" + roomname + "\"";
+        statement.execute(query);
     }
 
     public void createNewRoomTable(String roomname) throws SQLException {
         String query = "CREATE TABLE " + roomname + " (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(255), message VARCHAR(255));";
         statement.execute(query);
+    }
+
+    public ArrayList<String[]> getAllRooms() throws SQLException {
+        String query = "SELECT * FROM allrooms";
+        ResultSet resultSet = statement.executeQuery(query);
+        ArrayList<String[]> allrooms = new ArrayList<>();
+        while (resultSet.next()) {
+            // get the second field of that entry in resultSet
+            String roomname = resultSet.getString(2);
+            String his = resultSet.getString(3);
+            String cur = resultSet.getString(4);
+            String[] roomInfo = {roomname, his, cur};
+            allrooms.add(roomInfo);
+        }
+        return allrooms;
     }
 }

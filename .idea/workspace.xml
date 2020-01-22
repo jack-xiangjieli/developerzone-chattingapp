@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="badfa2c3-0e69-4860-a291-b440463716f9" name="Default Changelist" comment="" />
+    <list default="true" id="badfa2c3-0e69-4860-a291-b440463716f9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/HttpRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/HttpRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/JdbcMySQLVersion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/JdbcMySQLVersion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/WebSocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerFansChattingApp/sourcecode/WebSocketHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/chatroom.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/chatroom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sourcecode/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sourcecode/HttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sourcecode/JdbcMySQLVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sourcecode/JdbcMySQLVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sourcecode/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sourcecode/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sourcecode/WebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sourcecode/WebSocketHandler.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +28,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1VHZHEoSwCK2aNFtI64tZDuovey" />
   <component name="PropertiesComponent">
@@ -106,10 +123,25 @@
       <workItem from="1576947943548" duration="4517000" />
       <workItem from="1576953162911" duration="41955000" />
       <workItem from="1577329654540" duration="764000" />
+      <workItem from="1579551311792" duration="42000" />
+      <workItem from="1579551384834" duration="20667000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

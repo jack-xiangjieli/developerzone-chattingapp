@@ -83,8 +83,19 @@ public class Room {
                     Socket socket = socketChannel.socket();
 
                     String msg = WebSocketHandler.decodeMessage(socket);
+                    System.out.println("decoded message: " + msg);
                     String[] tmpArr = new String[2];
                     int firstSpacePos = msg.indexOf(' ');
+
+                    // firstSpacePos <= 0 means that current client has left the room
+                    // and we received a message of his leaving, so we just remove the
+                    // client socket from the clientsInTheRoom set and continue the loop
+                    if (firstSpacePos <= 0) {
+                        clientsInTheRoom.remove(socketChannel);
+                        jdbcMySQLVersion.updateCurrentOnline(roomname, clientsInTheRoom.size());
+                        continue;
+                    }
+
                     tmpArr[0] = msg.substring(0, firstSpacePos);
                     tmpArr[1] = msg.substring(firstSpacePos + 1);
                     newMessages.add(new String[]{tmpArr[0], tmpArr[1]});
@@ -118,7 +129,7 @@ public class Room {
      * We need the synchonized key word since the selector, clientsInTheRoom,
      * and the clientsToBeAdded variables are being shared
      */
-    public synchronized void addAllClients() throws IOException {
+    public synchronized void addAllClients() throws IOException, SQLException {
         for (SocketChannel socketChannel : clientsToBeAdded) {
             socketChannel.configureBlocking(false);
             selector.selectNow();
@@ -129,6 +140,7 @@ public class Room {
             clientsInTheRoom.add(socketChannel);
         }
         clientsToBeAdded.clear();
+        jdbcMySQLVersion.updateCurrentOnline(roomname, clientsInTheRoom.size());
     }
 
 
